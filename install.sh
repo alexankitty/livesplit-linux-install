@@ -76,7 +76,7 @@ rm /tmp/LiveSplitDevBuild.zip
 echo "LiveSplit installed to $livesplit_install_path"
 echo "LiveSplit hotkeys binary installed to $HOME/LiveSplit/live-split-hotkeys"
 
-winetricks gdiplus || {
+winetricks -q gdiplus || {
     echo "Failed to install gdiplus via winetricks."
     exit 1
 }

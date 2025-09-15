@@ -59,6 +59,8 @@ The following scripts are installed to `/usr/local/bin`:
 - `livesplitwine` — Same as above, but using the wineprefix of the launcher.
 - `livesplitproton` — Run LiveSplit with Proton (for Steam integration and AutoSplit Support).
 
+Both `livesplitwine` and `livesplitproton` will automatically ensure gdiplus is installed via winetricks so that LiveSplit displays correctly when running under a different prefix.
+
 ### Enabling Global Hotkeys
 
 To enable global hotkeys, set the environment variable `LIVESPLIT_HOTKEYS_ENABLED=1` before running the script. For example:

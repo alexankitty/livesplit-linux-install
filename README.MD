@@ -81,6 +81,12 @@ To enable hotkeys in this mode:
 LIVESPLIT_HOTKEYS_ENABLED=1 livesplitproton %command%
 ```
 
+### Other Important Information
+
+This uses the latest development build which allows for the TCP server to run at startup. As a consequence of this, if multiple LiveSplits are running, subsequent ones will crash as it will fail to open the TCP port.
+
+With global hotkeys enabled, because of how difficult it is to differentiate if LiveSplit is in focus or not, hotkeys will get double sent.
+
 ### Configuration
 
 - The LiveSplit configuration and binaries are installed to `~/LiveSplit`.

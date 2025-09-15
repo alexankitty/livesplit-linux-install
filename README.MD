@@ -36,7 +36,6 @@ Clone this repository and run the install script:
 ```sh
 git clone https://github.com/yourusername/livesplit-linux-install.git
 cd livesplit-linux-install
-chmod +x install.sh
 ./install.sh
 ```
 

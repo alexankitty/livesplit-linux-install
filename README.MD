@@ -110,6 +110,10 @@ rm ~/.local/share/applications/LiveSplitNoGlobals.desktop
 - If you encounter issues with Wine or Proton, consult their documentation.
 - For hotkey issues, ensure `LIVESPLIT_HOTKEYS_ENABLED=1` is set.
 
+## Help Wanted
+
+Please submit an issue with any information about tests that can be performed to verify if `livesplitwine` works correctly with AutoSplitting.
+
 ## Credits
 
 - [LiveSplit](https://livesplit.org/)

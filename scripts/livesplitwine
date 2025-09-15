@@ -1,4 +1,4 @@
-hotkeys_path=$HOME/git/live-split-hotkeys/target/debug/live-split-hotkeys
+hotkeys_path=$HOME/LiveSplit/live-split-hotkeys
 livesplit_path=$HOME/LiveSplit/LiveSplit.exe
 wine $livesplit_path &
 if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then

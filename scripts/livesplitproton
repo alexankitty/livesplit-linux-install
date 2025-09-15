@@ -1,0 +1,16 @@
+hotkeys_path=$HOME/git/live-split-hotkeys/target/debug/live-split-hotkeys
+livesplit_path=$HOME/LiveSplit/LiveSplit.exe
+installed=$(winetricks list-installed | grep gdiplus)
+if [ -z $installed ]; then
+    winetricks gdiplus
+fi
+env PROTON_REMOTE_DEBUG_CMD=$livesplit_path "$@" &
+if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then
+    echo starting hotkey listener
+    sleep 10
+    $hotkeys_path &
+    lshk_pid=$!
+    ls_pid=$(pgrep LiveSplit.exe)
+    tail --pid $ls_pid -f /dev/null & wait $!
+    kill -9 $lshk_pid
+fi

@@ -1,0 +1,13 @@
+hotkeys_path=$HOME/LiveSplit/live-split-hotkeys
+livesplit_path=$HOME/LiveSplit/LiveSplit.exe
+export WINE_PREFIX=$HOME/.wine
+wine $livesplit_path &
+if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then
+    echo starting hotkey listener
+    sleep 10
+    $hotkeys_path &
+    lshk_pid=$!
+    ls_pid=$(pgrep LiveSplit.exe)
+    tail --pid $ls_pid -f /dev/null & wait $!
+    kill -9 $lshk_pid
+fi

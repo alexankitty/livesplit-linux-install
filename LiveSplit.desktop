@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LiveSplit
+Type=Application
+StartupNotify=true
+Icon=livesplit
+Exec=env LIVESPLIT_HOTKEYS_ENABLED=1 WINEPREFIX=/home/alexandra/.local/share/livesplit /usr/local/bin/livesplit %u
+Path=/home/alexandra/LiveSplit
+Categories=Game

@@ -1,16 +1,55 @@
 hotkeys_path=$HOME/LiveSplit/live-split-hotkeys
 livesplit_path=$HOME/LiveSplit/LiveSplit.exe
 installed=$(winetricks list-installed | grep gdiplus)
-if [ -z $installed ]; then
-    winetricks gdiplus
+proton_path=${STEAM_COMPAT_TOOL_PATHS%%:*}
+alias winetricks="${proton_path}/gamefixes/winetricks"
+for i; do :; done
+game_name=$(basename "$i")
+game_path=$i
+newargs=""
+for arg in "$@"; do
+    if [ "$arg" = "waitforexitandrun" ]; then
+        newargs="$newargs run"
+    else
+        newargs="$newargs $arg"
+    fi
+done
+set -- $newargs
+
+if [ -z $(which zenity) ]; then
+    echo "Zenity is required for this script to work. Please install it and try again."
+    exit 1
 fi
-env PROTON_REMOTE_DEBUG_CMD=$livesplit_path "$@" &
+
+if [ -z $installed ]; then
+    winetricks -q gdiplus
+fi
+
+$proton_path/proton run $livesplit_path &
+env $@ &
+sleep 5
+game_pid=$(pgrep -x $game_name)
 if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then
     echo starting hotkey listener
     sleep 10
     $hotkeys_path &
     lshk_pid=$!
     ls_pid=$(pgrep LiveSplit.exe)
+    
+fi
+
+while [[ $LIVESPLIT_RESTARTABLE == 1 ]]; do
+    tail --pid $game_pid -f /dev/null & wait $!
+    zenity --question --text="The game has exited. Do you wish to relaunch it?" --ok-label="Yes" --cancel-label="No"
+    if [ $? -ne 0 ]; then
+        break
+    fi
+    env $@ &
+    sleep 5
+    game_pid=$(pgrep -x $game_name)
+done
+
+if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then
     tail --pid $ls_pid -f /dev/null & wait $!
     kill -9 $lshk_pid
 fi

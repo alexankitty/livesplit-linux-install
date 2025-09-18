@@ -2,7 +2,7 @@ hotkeys_path=$HOME/LiveSplit/live-split-hotkeys
 livesplit_path=$HOME/LiveSplit/LiveSplit.exe
 installed=$(winetricks list-installed | grep gdiplus)
 if [ -z $installed ]; then
-    winetricks gdiplus
+    winetricks -q gdiplus
 fi
 wine $livesplit_path &
 if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then

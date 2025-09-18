@@ -38,6 +38,27 @@ if [[ -z $(which wget) ]]; then
     exit 1
 fi
 
+if [[ -z $(which winetricks) ]]; then
+    echo "Winetricks is not installed. Please install winetricks from your distro's package manager."
+    exit 1
+fi
+
+if [[ -z $(which desktop-file-install) ]]; then
+    echo "desktop-file-utils is not installed. Please install desktop-file-utils from your distro's package manager."
+    exit 1
+fi
+
+if [[ -d $livesplit_install_path ]]; then
+    echo "LiveSplit is already installed in $livesplit_install_path"
+    echo "If you want to reinstall, please remove the directory and try again."
+    exit 1
+fi
+
+if [[ -z $(which zenity) ]]; then
+    echo "Zenity is required for some installed scripts to work. Please install it and try again."
+    exit 1
+fi
+
 git clone -b remove-global-hotkey-setting $livesplit_hotkeys /tmp/live-split-hotkeys || {
     echo "Failed to clone LiveSplit hotkeys repository."
     exit 1

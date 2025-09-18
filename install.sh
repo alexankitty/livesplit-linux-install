@@ -102,6 +102,8 @@ winetricks -q gdiplus || {
     exit 1
 }
 
+ln -s $HOME/LiveSplit $HOME/.local/share/livesplit/drive_c/users/`whoami`/Favorites/LiveSplit
+
 cp "$SCRIPT_DIR/livesplit.png" "$ICON_PATH/livesplit.png"
 sed -i "s|^Exec=.*|$EXEC_LINE|" "$SCRIPT_DIR/LiveSplit.desktop"
 sed -i "s|^Path=.*|$PATH_LINE|" "$SCRIPT_DIR/LiveSplit.desktop"

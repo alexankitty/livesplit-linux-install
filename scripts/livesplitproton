@@ -42,7 +42,7 @@ if [ -z $(which zenity) ]; then
 fi
 
 # Check for gdiplus
-#installed=$(winetricks list-installed | grep gdiplus)
+installed=$(winetricks list-installed | grep gdiplus)
 
 # Get game name and path
 for i; do :; done
@@ -52,7 +52,7 @@ game_path=$i
 # Install gdiplus if not installed
 if [ -z $installed ]; then
     echo installing gdiplus
-    #winetricks -q gdiplus
+    winetricks -q gdiplus
 fi
 
 unset WINE WINESERVER WINEPREFIX

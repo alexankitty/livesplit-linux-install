@@ -1,6 +1,6 @@
 hotkeys_path=$HOME/LiveSplit/live-split-hotkeys
 livesplit_path=$HOME/LiveSplit/LiveSplit.exe
-export WINE_PREFIX=$HOME/.wine
+export WINEPREFIX="$HOME/.local/share/livesplit"
 wine $livesplit_path &
 if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then
     echo starting hotkey listener

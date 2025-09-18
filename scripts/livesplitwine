@@ -4,6 +4,11 @@ installed=$(winetricks list-installed | grep gdiplus)
 if [ -z $installed ]; then
     winetricks -q gdiplus
 fi
+
+if ! [ -d $WINEPREFIX/drive_c/users/`whoami`/Favorites/LiveSplit ]; then
+    ln -s $HOME/LiveSplit $WINEPREFIX/drive_c/users/`whoami`/Favorites/LiveSplit
+fi
+
 wine $livesplit_path &
 if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then
     echo starting hotkey listener

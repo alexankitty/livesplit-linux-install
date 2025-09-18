@@ -55,6 +55,10 @@ if [ -z $installed ]; then
     winetricks -q gdiplus
 fi
 
+if ! [ -d $WINEPREFIX/drive_c/users/steamuser/Favorites/LiveSplit ]; then
+    ln -s $HOME/LiveSplit $WINEPREFIX/drive_c/users/steamuser/Favorites/LiveSplit
+fi
+
 unset WINE WINESERVER WINEPREFIX
 
 # Run LiveSplit and the game

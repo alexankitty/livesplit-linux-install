@@ -103,6 +103,8 @@ This uses the latest development build which allows for the TCP server to run at
 
 With global hotkeys enabled, because of how difficult it is to differentiate if LiveSplit is in focus or not, hotkeys will get double sent.
 
+Links the LiveSplit folder into prefixes so opening layouts and such are simplified by going into Favorites > LiveSplit.
+
 ### Configuration
 
 - The LiveSplit configuration and binaries are installed to `~/LiveSplit`.

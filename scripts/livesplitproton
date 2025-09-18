@@ -34,8 +34,7 @@ if [[ $LIVESPLIT_HOTKEYS_ENABLED == 1 ]]; then
     sleep 10
     $hotkeys_path &
     lshk_pid=$!
-    ls_pid=$(pgrep LiveSplit.exe)
-    
+    ls_pid=$(pgrep LiveSplit.exe)   
 fi
 
 while [[ $LIVESPLIT_RESTARTABLE == 1 ]]; do

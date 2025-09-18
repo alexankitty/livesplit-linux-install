@@ -22,11 +22,12 @@ Make sure you have the following packages installed:
 - `git`
 - `wget`
 - `desktop-file-utils` (for `desktop-file-install`)
+- `zenity`
 
 On Ubuntu/Debian, you can install them with:
 
 ```sh
-sudo apt install cargo wine winetricks unzip git wget desktop-file-utils
+sudo apt install cargo wine winetricks unzip git wget desktop-file-utils zenity
 ```
 
 2. **Run the Installer**
@@ -80,6 +81,21 @@ To enable hotkeys in this mode:
 ```
 LIVESPLIT_HOTKEYS_ENABLED=1 livesplitproton %command%
 ```
+
+### Game Restart Support
+
+To enable restart support for the game, set the environment variable `LIVESPLIT_RESTARTABLE=1` before running the `livesplitproton` script. For example:
+
+```sh
+LIVESPLIT_RESTARTABLE=1 livesplitproton %command%
+```
+
+This will grab the PID of the game and check if it's still running. Once it closes, it'll display a message box allowing you to restart the game.
+
+#### Caveats
+
+Due to the implementation, some, if not all, games seem to hang livesplit once the game is restarted. So while this feature is supported, it won't be very usable until there is a proper fix for the livesplit freezing issue.
+
 
 ### Other Important Information
 
